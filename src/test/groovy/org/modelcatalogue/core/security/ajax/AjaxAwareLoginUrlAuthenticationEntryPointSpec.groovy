@@ -13,13 +13,18 @@ class AjaxAwareLoginUrlAuthenticationEntryPointSpec extends Specification {
         HttpServletResponse response = Mock(HttpServletResponse)
 
         AjaxAwareLoginUrlAuthenticationEntryPoint entryPoint = new AjaxAwareLoginUrlAuthenticationEntryPoint()
+        entryPoint.statusForAjaxCalls = status
 
         when:
         entryPoint.commence(request, response, new BadCredentialsException('Blah'))
 
         then:
+        entryPoint.statusForAjaxCalls == status
         1 * request.getHeader('Accept') >> 'application/json'
-        1 * response.sendError(HttpServletResponse.SC_FORBIDDEN, _)
+        1 * response.sendError(status, _)
+
+        where:
+        status << [HttpServletResponse.SC_UNAUTHORIZED, HttpServletResponse.SC_FORBIDDEN]
 
     }
 
@@ -35,7 +40,7 @@ class AjaxAwareLoginUrlAuthenticationEntryPointSpec extends Specification {
         then:
         thrown(NullPointerException) // calling super causes this
         1 * request.getHeader('Accept') >> 'text/plain'
-        0 * response.sendError(HttpServletResponse.SC_FORBIDDEN, _)
+        0 * response.sendError(HttpServletResponse.SC_UNAUTHORIZED, _)
 
     }
 

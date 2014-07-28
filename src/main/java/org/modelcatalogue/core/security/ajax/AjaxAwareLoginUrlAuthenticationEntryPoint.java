@@ -9,12 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AjaxAwareLoginUrlAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
+    private int statusForAjaxCalls = HttpServletResponse.SC_UNAUTHORIZED;
+
     public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authException) throws IOException, ServletException {
         String acceptHeader = request.getHeader("Accept");
         if (acceptHeader != null && acceptHeader.startsWith("application/json")) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
+            response.sendError(statusForAjaxCalls, "Access Denied");
         } else {
             super.commence(request, response, authException);
         }
+    }
+
+    public int getStatusForAjaxCalls() {
+        return statusForAjaxCalls;
+    }
+
+    public void setStatusForAjaxCalls(int statusForAjaxCalls) {
+        this.statusForAjaxCalls = statusForAjaxCalls;
     }
 }
