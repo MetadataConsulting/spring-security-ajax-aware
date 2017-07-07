@@ -1,3 +1,5 @@
+https://travis-ci.org/MetadataConsulting/spring-security-ajax-aware.svg?branch=master
+
 Spring Security AJAX Aware
 ------------------------------------
 
