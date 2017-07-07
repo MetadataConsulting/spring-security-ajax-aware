@@ -12,7 +12,7 @@ class AjaxAwareLoginUrlAuthenticationEntryPointSpec extends Specification {
         HttpServletRequest request = Mock(HttpServletRequest)
         HttpServletResponse response = Mock(HttpServletResponse)
 
-        AjaxAwareLoginUrlAuthenticationEntryPoint entryPoint = new AjaxAwareLoginUrlAuthenticationEntryPoint()
+        AjaxAwareLoginUrlAuthenticationEntryPoint entryPoint = new AjaxAwareLoginUrlAuthenticationEntryPoint("/api/login")
         entryPoint.statusForAjaxCalls = status
 
         when:
@@ -32,7 +32,7 @@ class AjaxAwareLoginUrlAuthenticationEntryPointSpec extends Specification {
         HttpServletRequest request = Mock(HttpServletRequest)
         HttpServletResponse response = Mock(HttpServletResponse)
 
-        AjaxAwareLoginUrlAuthenticationEntryPoint entryPoint = new AjaxAwareLoginUrlAuthenticationEntryPoint()
+        AjaxAwareLoginUrlAuthenticationEntryPoint entryPoint = new AjaxAwareLoginUrlAuthenticationEntryPoint("/api/login")
 
         when:
         entryPoint.commence(request, response, new BadCredentialsException('Blah'))

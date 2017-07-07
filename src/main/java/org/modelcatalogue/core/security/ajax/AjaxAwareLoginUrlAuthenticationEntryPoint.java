@@ -11,6 +11,15 @@ import java.io.IOException;
 public class AjaxAwareLoginUrlAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
     private int statusForAjaxCalls = HttpServletResponse.SC_UNAUTHORIZED;
 
+    /**
+     * @param loginFormUrl URL where the login page can be found. Should either be
+     *                     relative to the web-app context path (include a leading {@code /}) or an absolute
+     *                     URL.
+     */
+    public AjaxAwareLoginUrlAuthenticationEntryPoint(String loginFormUrl) {
+        super(loginFormUrl);
+    }
+
     public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authException) throws IOException, ServletException {
         String acceptHeader = request.getHeader("Accept");
         if (acceptHeader != null && acceptHeader.startsWith("application/json")) {

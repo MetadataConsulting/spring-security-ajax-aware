@@ -7,6 +7,10 @@ which returns status 401 FORBIDDEN for AJAX calls requesting `application/json` 
 The primary use case is to use [AngularJS](https://angularjs.org) and its [Angular HTTP Auth](https://github.com/witoldsz/angular-http-auth) module
 with [Grails](http://grails.org) framework and its [Spring Security Core Plugin](http://grails.org/plugin/spring-security-core). 
 
+## Branches
+
+**master** Master branch is fro Spring Security 4.x
+**spring-security-web-3.x** Master branch is fro Spring Security 3.x
 
 ## Usage
 You need to override `authenticationEntryPoint` bean in your application.

@@ -1,8 +1,19 @@
-apply plugin: "groovy"
-apply plugin: "maven"
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$gradleBintrayPluginVersion"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 group = 'org.modelcatalogue'
-version = '0.1.2'
+version = '1.0.0'
 description = 'Sets up Spring security to return 401 status codes for unauthorized AJAX calls'
 
 repositories {
@@ -10,23 +21,10 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.security:spring-security-web:3.2.4.RELEASE'
-    compile 'javax.servlet:servlet-api:2.5'
-
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    compile "org.springframework.security:spring-security-web:$springSecurityVersion"
+    compile "javax.servlet:javax.servlet-api:$javaxServletApiVersion"
+    testCompile "org.spockframework:spock-core:$spockVersion"
 }
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
-    }
-}
-
-apply plugin: 'maven-publish'
-apply plugin: 'bintray'
 
 publishing {
     publications {
