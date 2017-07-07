@@ -1,0 +1,9 @@
+sudo: false
+cache:
+  directories:
+  - $HOME/.m2/repositories/
+language: groovy
+jdk:
+- openjdk7
+install: true
+script: ./travis-build.sh
