@@ -10,8 +10,12 @@ with [Grails](http://grails.org) framework and its [Spring Security Core Plugin]
 
 ## Branches
 
-**master** Master branch is from Spring Security 4.x. Versions deployed to _master_ will have version number 1.x.x
-**spring-security-web-3.x** Master branch is fro Spring Security 3.x. Versions deployed to _spring-security-web-3.x__ will have version number 0.x.x
+### master
+Master branch is for Spring Security 4.x. Versions deployed to _master_ will have version number 1.x.x
+
+### spring-security-web-3.x
+
+This branch is for Spring Security 3.x. Versions deployed to _spring-security-web-3.x__ will have version number 0.x.x
 
 ## Usage
 You need to override `authenticationEntryPoint` bean in your application.
