@@ -1,5 +1,4 @@
-https://travis-ci.org/MetadataConsulting/spring-security-ajax-aware.svg?branch=master
-
+[![Build Status](https://travis-ci.org/MetadataConsulting/spring-security-ajax-aware.svg?branch=master)](https://travis-ci.org/MetadataConsulting/spring-security-ajax-aware)
 Spring Security AJAX Aware
 ------------------------------------
 
